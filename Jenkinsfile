@@ -18,7 +18,7 @@ pipeline {
                 }
                 post {
                     always {
-                        testNG(reportFilenamePattern: '**/Runners.TestRunner_results.xml')
+                        testNG(reportFilenamePattern: '**/testng-results.xml')
                     }
                 }
             }

@@ -16,6 +16,11 @@ pipeline {
                     echo 'Test stage'
                     sh 'mvn test'
                 }
+                post {
+                    always {
+                        testNG(reportFilenamePattern: '**/Runners.TestRunner_results.xml')
+                    }
+                }
             }
     }
 }

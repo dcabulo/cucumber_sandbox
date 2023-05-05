@@ -1,6 +1,5 @@
 Feature: feature to test login functionality
-  Scenario: Check login is successful with valid credentials
-    Given user is on login page
-    When users enters username and password
-    And clicks on login button
-    Then user is navigated to the home page
+  Scenario: Check title is displayed homepage
+    Given user is on duckduckgo page "https://duckduckgo.com/"
+    When user enter homepage
+    Then user saw title is displayed

@@ -1,25 +1,34 @@
 package StepDefinitions;
 
-import io.cucumber.java.en.And;
+import Utilities.Hooks;
+import helpers.HelperClass;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.testng.Assert;
+import pages.HomePage;
+
 
 public class LoginStep {
-    @Given("user is on login page")
-    public void user_is_on_login_page() {
-        System.out.println("Given - Inside step - user is on login page");
+
+    HomePage homePage = new HomePage();
+
+    private final Logger logger = LogManager.getLogger(LoginStep.class);
+    @Given("user is on duckduckgo page {string}")
+    public void userNavigateToHomePage(String url) {
+        HelperClass.openPage(url);
+        logger.info("You are in the home page");
     }
-    @When("users enters username and password")
-    public void users_enters_username_and_password() {
-        System.out.println("When - Inside step - users enters username and password");
+    @When("user enter homepage")
+    public void userEnterHomepage() {
+        homePage.waitElementVisibility(homePage.getHomeTitle());
+        logger.info("You check that the h1 is display");
     }
-    @And("clicks on login button")
-    public void clicks_on_login_button() {
-        System.out.println("And - Inside step - clicks on login button");
-    }
-    @Then("user is navigated to the home page")
-    public void user_is_navigated_to_the_home_page() {
-        System.out.println("Then - Inside step - user is navigated to the home page");
+    @Then("user saw title is displayed")
+    public void userTitleSawTitle() {
+        Assert.assertTrue(homePage.checkTitle(),"Title string doesn't match");
+        logger.info("The title match the string given");
     }
 }

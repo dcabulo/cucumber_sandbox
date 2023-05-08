@@ -4,6 +4,10 @@ pipeline {
             image "maven:3.6-jdk-8-slim"
         }
     }
+        environment {
+            USERNAME = credentials('USERNAME')
+            ACCESSTOKENTEST = credentials('ACCESSTOKENTEST')
+        }
     stages {
         stage('build') {
                 steps {

@@ -1,1 +1,2 @@
-mvn clean test
+mvn -B -DskipTests clean package
+mvn test

@@ -2,12 +2,13 @@ package helpers;
 
 import com.cucumber.driver.Driver;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class HelperClass {
 
     private static HelperClass helperClass;
     
-    private static WebDriver driver;
+    private static RemoteWebDriver driver;
 
     private HelperClass(){
         Driver browser = new Driver();
@@ -31,7 +32,6 @@ public class HelperClass {
     
     public static void tearDown(){
         if(driver!=null){
-            driver.close();
             driver.quit();
         }
         helperClass = null;

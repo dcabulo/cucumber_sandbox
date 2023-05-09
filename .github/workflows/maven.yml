@@ -9,8 +9,6 @@
 name: Cucumber Java CI with maven and TestNG
 
 on:
-  push:
-    branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
 
@@ -30,4 +28,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B -DskipTests clean package
     - name: Test scenarios
+      env:
+        USERNAME: ${{ secrets.USERNAME }}
+        ACCESSTOKENTEST: ${{ secrets.ACCESSTOKENTEST }}
       run: mvn test
